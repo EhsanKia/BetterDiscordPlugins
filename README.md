@@ -24,7 +24,7 @@ Simply add emotes to favorites by clicking the start in the top right,
 then as you're typing the name of the emote, press tab to complete the name.
 
 #### EmbedVideoGif
-This plugin embed gfycat/gifv videos and plays then on hover similar to how normal gifs work.
+This plugin automatically embeds gfycat/gifv videos and plays them on hover just like a normal gif.
 
 #### ImageEmote
 This plugin allows you to send a small emote-like image (as an attachment) with a simple chat command.
