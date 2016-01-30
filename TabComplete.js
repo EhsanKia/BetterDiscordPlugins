@@ -1,5 +1,24 @@
 //META{"name":"TabCompletion"}*//
 
+/* 
+ ====== Installation ======
+ 1. Save file as TabCompletion.js
+ 2. place file in %appdata%/BetterDiscord/plugins
+ 3. Refresh Discord (ctrl+R)
+ 4. Go to Settings > BetterDiscord > Plugins
+ 5. Enable TabCompletion
+ 
+ The plugin only tabcompletes favorited emotes,
+ so you will have to click the star in the top right
+ corner of the emotes to add them to favorite list.
+ 
+ ======== Changelog ========
+ 1.0: Initial verison
+ 1.1: Fixed bug when switching servers
+ 1.2: Clean up of handlers and scripts on stop
+ 
+**/
+
 function TabCompletion() {}
 
 TabCompletion.prototype.load = function() {};
