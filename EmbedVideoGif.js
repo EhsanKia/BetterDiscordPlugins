@@ -17,6 +17,7 @@ like you would with normal gifs
  ======== Changelog ========
  1.0: Initial release
  1.1: Scroll chat after embedding
+ 1.2: Put a height limit
 
 **/
 
