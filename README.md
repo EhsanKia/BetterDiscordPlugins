@@ -29,3 +29,7 @@ This plugin automatically embeds gfycat/gifv videos and plays them on hover just
 #### ImageEmote
 This plugin allows you to send a small emote-like image (as an attachment) with a simple chat command.
 You can add as many custom images and associated commands as you need in the plugin settings.
+
+#### ReorderServers
+This plugin let's you drag and drop servers on the sidebar to reorder them as you like.
+It will save the ordering automatically and rearrange your server list when you restart.
