@@ -36,6 +36,7 @@ EmbedVideoGif.prototype.parseChat = function() {
 
 		function replaceImage(src) {
 			var vid = $("<video width='300px' loop><source src='" + src + "'></video>");
+			vid.css('maxHeight', '500px');
 			vid.mouseenter(function() {
 				this.play();
 			}).mouseleave(function() {
@@ -106,7 +107,7 @@ EmbedVideoGif.prototype.getDescription = function() {
 };
 
 EmbedVideoGif.prototype.getVersion = function() {
-	return "1.1";
+	return "1.2";
 };
 
 EmbedVideoGif.prototype.getAuthor = function() {
