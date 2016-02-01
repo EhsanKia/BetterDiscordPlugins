@@ -23,13 +23,21 @@ This plugin let's you tab complete emote names that you have favorited.
 Simply add emotes to favorites by clicking the start in the top right,
 then as you're typing the name of the emote, press tab to complete the name.
 
+![Preview](https://zippy.gfycat.com/PastInsidiousCanvasback.gif)
+
 #### EmbedVideoGif
 This plugin automatically embeds gfycat/gifv videos and plays them on hover just like a normal gif.
+
+![Preview](https://giant.gfycat.com/GenuineHardtofindIndianpalmsquirrel.gif)
 
 #### ImageEmote
 This plugin allows you to send a small emote-like image (as an attachment) with a simple chat command.
 You can add as many custom images and associated commands as you need in the plugin settings.
 
+![Preview](https://zippy.gfycat.com/ShadyInfiniteGander.gif)
+
 #### ReorderServers
 This plugin let's you drag and drop servers on the sidebar to reorder them as you like.
 It will save the ordering automatically and rearrange your server list when you restart.
+
+![Preview](https://zippy.gfycat.com/LittleDistantAmericanrobin.gif)
