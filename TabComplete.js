@@ -1,22 +1,23 @@
 //META{"name":"TabCompletion"}*//
 
-/* 
+/*
  ====== Installation ======
  1. Save file as TabCompletion.js
  2. place file in %appdata%/BetterDiscord/plugins
  3. Refresh Discord (ctrl+R)
  4. Go to Settings > BetterDiscord > Plugins
  5. Enable TabCompletion
- 
+
  The plugin only tabcompletes favorited emotes,
  so you will have to click the star in the top right
  corner of the emotes to add them to favorite list.
- 
+
  ======== Changelog ========
  1.0: Initial verison
  1.1: Fixed bug when switching servers
  1.2: Clean up of handlers and scripts on stop
- 
+ 1.3: Prevent event handler attaching twice
+
 **/
 
 function TabCompletion() {}
@@ -40,7 +41,7 @@ TabCompletion.prototype.stop = function() {
 	// Remove handlers and injected script
 	el.unbind("click focus", this.focusHandler);
 	el[0].removeEventListener("keydown", this.handleKeypress);
-	$('#jqueryCaretPlugin').remove()
+	$('#jqueryCaretPlugin').remove();
 };
 
 TabCompletion.prototype.getName = function() {
@@ -52,7 +53,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.2";
+	return "1.3";
 };
 
 TabCompletion.prototype.getAuthor = function() {
@@ -61,6 +62,7 @@ TabCompletion.prototype.getAuthor = function() {
 
 TabCompletion.prototype.attachHandler = function() {
 	var el = $('.channel-textarea textarea');
+	if (el.hasClass("TabComplete")) return;
 	if (el.length == 0) return;
 
 	// Inject jQuery Caret plugin
@@ -126,4 +128,5 @@ TabCompletion.prototype.attachHandler = function() {
 	// bind handlers
 	el.bind("click focus", this.focusHandler);
 	el[0].addEventListener("keydown", this.handleKeypress, false);
+	el.addClass("TabComplete");
 }
