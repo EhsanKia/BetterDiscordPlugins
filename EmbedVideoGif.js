@@ -17,7 +17,7 @@ like you would with normal gifs
  ======== Changelog ========
  1.0: Initial release
  1.1: Scroll chat after embedding
- 1.2: Put a height limit
+ 1.2: Better GifVid detection
 
 **/
 
@@ -72,11 +72,10 @@ EmbedVideoGif.prototype.start = function() {
 	var self = this;
 	this.mutationObs = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
-			var newNodes = mutation.addedNodes;
-			if (newNodes.length === 0 || newNodes[0].classList === undefined) return;
-			if (newNodes[0].classList.contains('message-sending')) return;
-			if (!mutation.target.classList.contains('comment')) return;
-			self.parseChat();
+			var target = $(mutation.target);
+			if (target.hasClass('embed-thumbnail')) {
+				self.parseChat();
+			}
 		});
 	});
 
