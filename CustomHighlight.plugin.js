@@ -28,13 +28,13 @@
 function CustomHighlight() {}
 
 CustomHighlight.prototype.highlight = function () {
-		var lines = document.querySelectorAll('div.message-text');
-		for (i = 0; i < lines.length; ++i) {
-			var content = lines[i].innerText.toLowerCase();
-			if (!this.containsName(content)) continue;
-			var message = lines[i].parentElement.parentElement;
-			message.classList.add('mentioned');
-		}
+	var lines = document.querySelectorAll('div.message-text');
+	for (i = 0; i < lines.length; ++i) {
+		var content = lines[i].innerText.toLowerCase();
+		if (!this.containsName(content)) continue;
+		var message = lines[i].parentElement.parentElement;
+		message.classList.add('mentioned');
+	}
 };
 
 CustomHighlight.prototype.containsName = function(line) {
