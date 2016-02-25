@@ -37,7 +37,9 @@ You can add as many custom images and associated commands as you need in the plu
 ![Preview](https://zippy.gfycat.com/ShadyInfiniteGander.gif)
 
 #### ReorderServers
-This plugin let's you drag and drop servers on the sidebar to reorder them as you like.
-It will save the ordering automatically and rearrange your server list when you restart.
+This plugin is not available anymore. I recommend using [CosmicSalad's plugin](https://github.com/cosmicsalad/Discord-Themes-and-Plugins/blob/master/plugins/SortServers.js) for this.
 
-![Preview](https://zippy.gfycat.com/LittleDistantAmericanrobin.gif)
+#### Custom Highlight
+Allows you to set custom words to be highlighted in Discord.
+
+![Preview](http://i.imgur.com/cZzaM4t.png)
