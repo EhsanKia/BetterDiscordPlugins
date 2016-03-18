@@ -95,7 +95,7 @@ TabCompletion.prototype.attachHandler = function() {
 				textfunction = function(v){return (arguments.length?$this.val(v):$this.val());};
 
 				var text = textfunction();
-				var start = (/\w+$/.exec(text.substr(0, caretpos)) || {index: caretpos}).index;
+				var start = (/[@\w]+$/.exec(text.substr(0, caretpos)) || {index: caretpos}).index;
 				var end = caretpos + (/^\w+/.exec(text.substr(caretpos)) || [""])[0].length;
 				self.textsplit = [text.substring(0, start), text.substring(start, end), text.substring(end + 1)];
 			}
