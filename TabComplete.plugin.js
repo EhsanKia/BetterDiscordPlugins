@@ -17,6 +17,7 @@
  1.1: Fixed bug when switching servers
  1.2: Clean up of handlers and scripts on stop
  1.3: Prevent event handler attaching twice
+ 1.4: Fix clash when tab completing users
 
 **/
 
@@ -53,7 +54,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.3";
+	return "1.4";
 };
 
 TabCompletion.prototype.getAuthor = function() {
