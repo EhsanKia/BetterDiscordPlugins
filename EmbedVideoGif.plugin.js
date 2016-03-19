@@ -18,6 +18,7 @@ like you would with normal gifs
  1.0: Initial release
  1.1: Scroll chat after embedding
  1.2: Better GifVid detection
+ 1.3: Even better detection!
 
 **/
 
@@ -35,7 +36,7 @@ EmbedVideoGif.prototype.parseChat = function() {
 		var accessory = e.parents(".message .body").siblings(".accessory");
 
 		function replaceImage(src) {
-			var vid = $("<video width='300px' loop><source src='" + src + "'></video>");
+			var vid = $("<video width='400px' loop><source src='" + src + "'></video>");
 			vid.css('maxHeight', '500px');
 			vid.mouseenter(function() {
 				this.play();
@@ -75,6 +76,8 @@ EmbedVideoGif.prototype.start = function() {
 			var target = $(mutation.target);
 			if (target.hasClass('embed-thumbnail')) {
 				self.parseChat();
+			} else if (target.hasClass('comment')) {
+				self.parseChat();
 			}
 		});
 	});
@@ -106,7 +109,7 @@ EmbedVideoGif.prototype.getDescription = function() {
 };
 
 EmbedVideoGif.prototype.getVersion = function() {
-	return "1.2";
+	return "1.3";
 };
 
 EmbedVideoGif.prototype.getAuthor = function() {
