@@ -37,7 +37,7 @@ You can add as many custom images and associated commands as you need in the plu
 ![Preview](https://zippy.gfycat.com/ShadyInfiniteGander.gif)
 
 #### ReorderServers
-This plugin is not available anymore. I recommend using [CosmicSalad's plugin](https://github.com/cosmicsalad/Discord-Themes-and-Plugins/blob/master/plugins/SortServers.js) for this.
+This plugin is not available anymore. I recommend using [CosmicSalad's plugin](https://github.com/cosmicsalad/Discord-Themes-and-Plugins/blob/master/plugins/Sorter.js) for this.
 
 #### Custom Highlight
 Allows you to set custom words to be highlighted in Discord.
