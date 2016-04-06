@@ -67,11 +67,13 @@ TabCompletion.prototype.attachHandler = function() {
 	if (el.length == 0) return;
 
 	// Inject jQuery Caret plugin
-	var s = document.createElement("script");
-	s.id = "jqueryCaretPlugin"
-	s.type = "text/javascript";
-	s.src = "//raw.githubusercontent.com/acdvorak/jquery.caret/master/src/jquery.caret.js";
-	$("head").append(s);
+	if(!$("#jqueryCaretPlugin").length) {
+		var s = document.createElement("script");
+		s.id = "jqueryCaretPlugin"
+		s.type = "text/javascript";
+		s.src = "//raw.githubusercontent.com/acdvorak/jquery.caret/master/src/jquery.caret.js";
+		$("head").append(s);
+	}
 
 	// Couple variables to track state
 	var self = this;
