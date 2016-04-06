@@ -18,6 +18,7 @@
  1.2: Clean up of handlers and scripts on stop
  1.3: Prevent event handler attaching twice
  1.4: Fix clash when tab completing users
+ 1.5: Fix injecting Caret plugin multiple times
 
 **/
 
@@ -54,7 +55,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.4";
+	return "1.5";
 };
 
 TabCompletion.prototype.getAuthor = function() {
@@ -67,7 +68,7 @@ TabCompletion.prototype.attachHandler = function() {
 	if (el.length == 0) return;
 
 	// Inject jQuery Caret plugin
-	if(!$("#jqueryCaretPlugin").length) {
+	if($("#jqueryCaretPlugin").length === 0) {
 		var s = document.createElement("script");
 		s.id = "jqueryCaretPlugin"
 		s.type = "text/javascript";
