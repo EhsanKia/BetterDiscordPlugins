@@ -108,7 +108,7 @@ TabCompletion.prototype.attachHandler = function() {
 			if (self.textsplit[1] === "") return;
 
 			// calculate the collection of strings actually eligible for suggestion, either by filtering or by executing the function specified
-			var collection = Object.keys(favoriteEmotes);
+			var collection = Object.keys(quickEmoteMenu.favoriteEmotes);
 			collection = collection.filter(function(v){
 				return v.toLowerCase().indexOf(self.textsplit[1].toLowerCase())==0;
 			});
