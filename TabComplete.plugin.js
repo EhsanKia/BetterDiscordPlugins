@@ -19,6 +19,7 @@
  1.3: Prevent event handler attaching twice
  1.4: Fix clash when tab completing users
  1.5: Fix injecting Caret plugin multiple times
+ 1.6: Fix to work with new emote menu
 
 **/
 
@@ -55,7 +56,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.5";
+	return "1.6";
 };
 
 TabCompletion.prototype.getAuthor = function() {
