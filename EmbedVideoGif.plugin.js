@@ -19,6 +19,7 @@ like you would with normal gifs
  1.1: Scroll chat after embedding
  1.2: Better GifVid detection
  1.3: Even better detection!
+ 1.4: Support both mp4 and webm sources
 
 **/
 
@@ -35,8 +36,8 @@ EmbedVideoGif.prototype.parseChat = function() {
 
 		var accessory = e.parents(".message .body").siblings(".accessory");
 
-		function replaceImage(src) {
-			var vid = $("<video width='400px' loop><source src='" + src + "'></video>");
+		function replaceImage(webm, mp4) {
+			var vid = $("<video width='400px' loop><source src='" + webm + "'><source src='" + mp4 + "'></video>");
 			vid.css('maxHeight', '500px');
 			vid.mouseenter(function() {
 				this.play();
@@ -56,10 +57,11 @@ EmbedVideoGif.prototype.parseChat = function() {
 
 		if (tag1 !== null) {
 			$.getJSON('https://gfycat.com/cajax/get/' + tag1[1], function(data) {
-				replaceImage(data.gfyItem.webmUrl);
+				replaceImage(data.gfyItem.webmUrl, data.gfyItem.mp4Url);
 			});
 		} else {
-			replaceImage('https://i.imgur.com/' + tag2[1] + '.webm');
+			var base = 'https://i.imgur.com/' + tag2[1];
+			replaceImage(base + '.webm', base + '.mp4');
 		}
 
 	}).addClass("VidGif_parsed");
@@ -109,7 +111,7 @@ EmbedVideoGif.prototype.getDescription = function() {
 };
 
 EmbedVideoGif.prototype.getVersion = function() {
-	return "1.3";
+	return "1.4";
 };
 
 EmbedVideoGif.prototype.getAuthor = function() {
