@@ -20,6 +20,7 @@
  1.4: Fix clash when tab completing users
  1.5: Fix injecting Caret plugin multiple times
  1.6: Fix to work with new emote menu
+ 1.7: Make it more reliable and work in message edit mode
 
 **/
 
@@ -38,13 +39,10 @@ TabCompletion.prototype.onSwitch = function() {
 };
 
 TabCompletion.prototype.stop = function() {
-	var el = $('.channel-textarea textarea');
-	if (el.length == 0) return;
-
-	// Remove handlers and injected script
-	el.unbind("click focus", this.focusHandler);
-	el[0].removeEventListener("keydown", this.handleKeypress);
+	$('body').off('click focus', '.channel-textarea textarea');
+	$('body').off('keydown', '.channel-textarea textarea');
 	$('#jqueryCaretPlugin').remove();
+	$body.removeClass('TabComplete');
 };
 
 TabCompletion.prototype.getName = function() {
@@ -56,7 +54,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.6";
+	return "1.7";
 };
 
 TabCompletion.prototype.getAuthor = function() {
@@ -64,23 +62,23 @@ TabCompletion.prototype.getAuthor = function() {
 };
 
 TabCompletion.prototype.attachHandler = function() {
-	var el = $('.channel-textarea textarea');
-	if (el.hasClass("TabComplete")) return;
-	if (el.length == 0) return;
+	var $body = $('body');
+
+	if ($body.hasClass('TabComplete')) return;
 
 	// Inject jQuery Caret plugin
-	if($("#jqueryCaretPlugin").length === 0) {
-		var s = document.createElement("script");
-		s.id = "jqueryCaretPlugin"
-		s.type = "text/javascript";
-		s.src = "//raw.githubusercontent.com/acdvorak/jquery.caret/master/src/jquery.caret.js";
-		$("head").append(s);
+	if($('#jqueryCaretPlugin').length === 0) {
+		var s = document.createElement('script');
+		s.id = 'jqueryCaretPlugin'
+		s.type = 'text/javascript';
+		s.src = '//raw.githubusercontent.com/acdvorak/jquery.caret/master/src/jquery.caret.js';
+		$('head').append(s);
 	}
 
 	// Couple variables to track state
 	var self = this;
 	this.tabtries = -1;
-	this.textsplit = ["", "", ""];
+	this.textsplit = ['', '', ''];
 
 	// Handler to reset tab status
 	this.focusHandler = function() {
@@ -88,7 +86,7 @@ TabCompletion.prototype.attachHandler = function() {
 	}
 
 	// Handler to catch key events
-	this.handleKeypress = function (e) {
+	this.keypressHandler = function (e) {
 		var code = e.keyCode || e.which;
 		if (code == 9) { // tab pressed
 			e.preventDefault();
@@ -101,12 +99,12 @@ TabCompletion.prototype.attachHandler = function() {
 
 				var text = textfunction();
 				var start = (/[@\w]+$/.exec(text.substr(0, caretpos)) || {index: caretpos}).index;
-				var end = caretpos + (/^\w+/.exec(text.substr(caretpos)) || [""])[0].length;
+				var end = caretpos + (/^\w+/.exec(text.substr(caretpos)) || [''])[0].length;
 				self.textsplit = [text.substring(0, start), text.substring(start, end), text.substring(end + 1)];
 			}
 
 			// If no words in front of caret, exit
-			if (self.textsplit[1] === "") return;
+			if (self.textsplit[1] === '') return;
 
 			// calculate the collection of strings actually eligible for suggestion, either by filtering or by executing the function specified
 			var collection = Object.keys(quickEmoteMenu.favoriteEmotes);
@@ -131,7 +129,9 @@ TabCompletion.prototype.attachHandler = function() {
 	};
 
 	// bind handlers
-	el.bind("click focus", this.focusHandler);
-	el[0].addEventListener("keydown", this.handleKeypress, false);
-	el.addClass("TabComplete");
+	$body.off('click focus', '.channel-textarea textarea');
+	$body.off('keydown', '.channel-textarea textarea');
+	$body.on('click focus', '.channel-textarea textarea', this.focusHandler);
+	$body.on('keydown', '.channel-textarea textarea', this.keypressHandler);
+	$body.addClass('TabComplete');
 }
