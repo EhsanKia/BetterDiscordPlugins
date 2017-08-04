@@ -21,6 +21,7 @@
  1.5: Fix injecting Caret plugin multiple times
  1.6: Fix to work with new emote menu
  1.7: Make it more reliable and work in message edit mode
+ 1.8: Fix selectors for the new Discord UI
 
 **/
 
@@ -54,7 +55,7 @@ TabCompletion.prototype.getDescription = function() {
 };
 
 TabCompletion.prototype.getVersion = function() {
-	return "1.7";
+	return "1.8";
 };
 
 TabCompletion.prototype.getAuthor = function() {
