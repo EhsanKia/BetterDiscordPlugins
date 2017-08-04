@@ -39,8 +39,8 @@ TabCompletion.prototype.onSwitch = function() {
 };
 
 TabCompletion.prototype.stop = function() {
-	$('body').off('click focus', '.channel-textarea textarea');
-	$('body').off('keydown', '.channel-textarea textarea');
+	$('body').off('click focus', '.channel-text-area-default textarea');
+	$('body').off('keydown', '.channel-text-area-default textarea');
 	$('#jqueryCaretPlugin').remove();
 	$body.removeClass('TabComplete');
 };
@@ -129,9 +129,9 @@ TabCompletion.prototype.attachHandler = function() {
 	};
 
 	// bind handlers
-	$body.off('click focus', '.channel-textarea textarea');
-	$body.off('keydown', '.channel-textarea textarea');
-	$body.on('click focus', '.channel-textarea textarea', this.focusHandler);
-	$body.on('keydown', '.channel-textarea textarea', this.keypressHandler);
+	$body.off('click focus', '.channel-text-area-default textarea');
+	$body.off('keydown', '.channel-text-area-default textarea');
+	$body.on('click focus', '.channel-text-area-default textarea', this.focusHandler);
+	$body.on('keydown', '.channel-text-area-default textarea', this.keypressHandler);
 	$body.addClass('TabComplete');
 }
